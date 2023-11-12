@@ -1,0 +1,67 @@
+html{
+    max-width: 100vw;
+    max-height: 100vh;
+}
+body{
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background-image: url('../Img/fondo.jpg'); 
+    background-size: 100% 100%;
+    background-position:center center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+#createNoteYellow{
+    right: 10vw;
+    top: 1vh;
+}
+#createNoteBlue { 
+    z-index: 10;  
+    right: 1vw;
+    top: 1vh;
+  }
+
+img{
+    width: 100%;
+}
+button{
+    position: fixed;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    width: 10vw;
+}
+  
+
+
+  button::before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    top: 40%;
+    left: 45%;
+    transform: scale(0);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+  button:hover::before {
+    transform: scale(3);
+    opacity: 1;
+}
+.container_possit{
+    position: absolute;
+    width: 14vw;
+    visibility: hidden;
+    top: 20%;
+    left: 83%;
+}
+
+
+ 
