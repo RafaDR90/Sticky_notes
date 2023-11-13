@@ -1,8 +1,10 @@
 class Note {
-    constructor(text, coordX = 100, coordY = 100) {
+    constructor(text, coordX = 100, coordY = 100, color,id) {
         this.text = text;
         this.coordX = coordX;
         this.coordY = coordY;
+        this.color=color;
+        this.id=id;
     }
 
     getText() {
@@ -27,6 +29,22 @@ class Note {
 
     setCoordY(newCoordY) {
         this.coordY = newCoordY;
+    }
+
+    getId() {
+        return this.id;
+    }
+
+    setId(newId) {
+        this.id = newId;
+    }
+
+    getColor() {
+        return this.color;
+    }
+
+    setCoordY(newColor) {
+        this.color = newColor;
     }
 
     toString() {

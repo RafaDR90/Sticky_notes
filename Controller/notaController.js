@@ -1,5 +1,4 @@
 window.onload = () => {
-    var id = 0;
     const NewBlueSticky = document.getElementById('createNoteBlue');
     const NewYellowSticky = document.getElementById('createNoteYellow');
     const blueSticky = document.querySelector('#BlueContainer');
@@ -9,44 +8,62 @@ window.onload = () => {
     var cordXresta = 0;
     var cordYResta = 0;
     var imagen;
+    var arrayDeNotas = JSON.parse(localStorage.getItem('notas'));
+    if (arrayDeNotas==null){
+        var arrayDeNotas = {
+            'notas': []
+          };
+    }
+    
+    var id = arrayDeNotas.notas.reduce(function (maxId, nota) {
+        return Math.max(maxId, nota.id);
+      }, 0);
 
-    const agregarSticky = (trigger, stickyContainer) => {
-        let visibility = window.getComputedStyle(stickyContainer).visibility;
-        if (visibility == 'hidden') {
-            stickyContainer.style.visibility = 'visible';
-            stickyContainer.addEventListener('click', (ev) => {
-                pulsado = !pulsado;
-                imagen = stickyContainer;
-                posicionImg = imagen.getBoundingClientRect();
-                cordXresta = ev.clientX - posicionImg.left;
-                cordYResta = ev.clientY - posicionImg.top;
-            });
-        } else {
+    var id = arrayDeNotas.notas.length;
+
+    const agregarSticky = (boton, stickyContainer,color) => {
             let nuevoSticky = stickyContainer.cloneNode(true);
-            nuevoSticky.id = `contenedor${id++}`;
+            nuevoSticky.style.visibility='visible';
             nuevoSticky.style.top = '20%';
             nuevoSticky.style.left = '83%';
             main.appendChild(nuevoSticky);
+            let objNote=new Note('','83%','20%',color,id++);
+            arrayDeNotas.notas.push(objNote);
+            
+            let child = nuevoSticky.children;
+            let close=child[1];
+            let edit=child[0];
+
+            close.addEventListener('click',(e)=>{
+                idToDelete=objNote.getId();
+                arrayDeNotas.notas = arrayDeNotas.notas.filter(function (nota) {
+                    return nota.id !== idToDelete;
+                  });
+                nuevoSticky.remove();
+
+            })
 
             nuevoSticky.addEventListener('click', (event) => {
                 pulsado = !pulsado;
-                imagen = event.currentTarget;  // Utilizar el evento actual para obtener el elemento clicado
+                imagen = event.currentTarget;  
                 posicionImg = imagen.getBoundingClientRect();
                 cordXresta = event.clientX - posicionImg.left;
                 cordYResta = event.clientY - posicionImg.top;
             });
-        }
+        
     };
 
-    NewBlueSticky.addEventListener('click', () => agregarSticky(NewBlueSticky, blueSticky));
-    NewYellowSticky.addEventListener('click', () => agregarSticky(NewYellowSticky, yellowSticky));
+    NewBlueSticky.addEventListener('click', () => agregarSticky(NewBlueSticky, blueSticky,'blue'));
+    NewYellowSticky.addEventListener('click', () => agregarSticky(NewYellowSticky, yellowSticky,'yellow'));
 
     document.addEventListener("mousemove", (e) => {
         cordX = e.clientX;
         cordY = e.clientY;
         if (pulsado && imagen) {
-            imagen.style.top = ((cordY - cordYResta) / window.innerHeight) * 100 + "%";
-            imagen.style.left = ((cordX - cordXresta) / window.innerWidth) * 100 + "%";
+            let posTop=((cordY - cordYResta) / window.innerHeight) * 100 + "%";
+            let posLeft=((cordX - cordXresta) / window.innerWidth) * 100 + "%";
+            imagen.style.top = posTop;
+            imagen.style.left = posLeft;
         }
     });
 };

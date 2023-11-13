@@ -62,6 +62,17 @@ button{
     top: 20%;
     left: 83%;
 }
-
+.close{
+    top: 0.2vw;
+    left:11.4vw;
+    position: absolute;
+    width: 2vw;
+}
+.edit{
+    position: absolute;
+    width: 1.4vw;
+    top: 0.5vw;
+    left: 10.1vw;
+}
 
  
