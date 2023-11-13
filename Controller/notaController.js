@@ -31,8 +31,10 @@ window.onload = () => {
             arrayDeNotas.notas.push(objNote);
             
             let child = nuevoSticky.children;
-            let close=child[1];
-            let edit=child[0];
+            let close=child[2];
+            let edit=child[1];
+            let text=child[0];
+            let parrafo=child[3];
 
             close.addEventListener('click',(e)=>{
                 idToDelete=objNote.getId();
@@ -43,12 +45,40 @@ window.onload = () => {
 
             })
 
+            edit.addEventListener('click',(e)=>{
+                e.stopPropagation();
+                text.style.visibility='visible';
+                text.focus();
+                parrafo.style.visibility='hidden';
+
+                text.addEventListener('blur', () => {
+                    text.style.visibility = 'hidden';
+                    parrafo.innerText = text.value;
+                    objNote.setText(text.value);
+                    parrafo.style.visibility='visible';
+                });
+            
+                text.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === 'Escape') {
+                        event.preventDefault(); 
+                        text.style.visibility = 'hidden';
+                        parrafo.innerText = text.value; 
+                        objNote.setText(text.value);
+                        parrafo.style.visibility='visible';
+
+                    }
+                });
+                
+            })
+
             nuevoSticky.addEventListener('click', (event) => {
                 pulsado = !pulsado;
                 imagen = event.currentTarget;  
                 posicionImg = imagen.getBoundingClientRect();
                 cordXresta = event.clientX - posicionImg.left;
                 cordYResta = event.clientY - posicionImg.top;
+                objNote.setCoordX(posLeft);
+                objNote.setCoordY(posTop);
             });
         
     };

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="index.js"></script>
     <script src="Controller/notaController.js"></script>
     <script src="Model/nota.js"></script>
     <link rel="stylesheet" href="Styles/vistaIndex.css">
@@ -14,8 +13,23 @@
         <button id="createNoteYellow"><img src="Img/AMARILLO.png" alt=""></button>
         <button id="createNoteBlue"><img src="Img/AZUL_CLARO.png" alt=""></button>
         
-        <div id="yellowContainer" class="container_possit"><img class="edit" src="Img/edit.png"><img class="close" src="Img/close.png"><img src="./Img/YellowSticky.png" alt=""></div>
-        <div id="BlueContainer" class="container_possit"><img class="edit" src="Img/edit.png"><img class="close" src="Img/close.png"><img src="./Img/BlueSticky.png" alt=""></div>
+        <div id="yellowContainer" class="container_possit">
+            <textarea name="text" id="text" cols="30" rows="10"></textarea>
+            <img class="edit" src="Img/edit.png">
+            <img class="close" src="Img/close.png">
+            <p class="textNote"></p>
+            <img src="./Img/YellowSticky.png" alt="">
+        </div>
+
+        <div id="BlueContainer" class="container_possit">
+            <textarea name="text" id="text" cols="30" rows="10"></textarea>
+            <img class="edit" src="Img/edit.png">
+            <img class="close" src="Img/close.png">
+            <p class="textNote"></p>
+            <img src="./Img/BlueSticky.png" alt="">
+        </div>
+        
+            
     </main>
 </body>
 </html>

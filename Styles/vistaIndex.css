@@ -63,7 +63,7 @@ button{
     left: 83%;
 }
 .close{
-    top: 0.2vw;
+    top: 0.8vw;
     left:11.4vw;
     position: absolute;
     width: 2vw;
@@ -71,8 +71,30 @@ button{
 .edit{
     position: absolute;
     width: 1.4vw;
-    top: 0.5vw;
+    top: 1.2vw;
     left: 10.1vw;
 }
 
+textarea{
+    position: absolute;
+    margin-top: 18%;
+    margin-left: 4.5%;
+    width: 83%;
+    height: 70%;
+    font-size:1.6vw;
+    background-color: transparent;
+    border:ridge grey 0.3vw;
+    border-radius: 10%;
+    visibility: hidden;
+    text-align: center;
+}
+.textNote{
+    margin-top: 20%;
+    margin-left: 5%;
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    font-size:2vw;
+    text-align: center;
+}
  
