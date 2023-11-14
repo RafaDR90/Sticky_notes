@@ -43,7 +43,7 @@ class Note {
         return this.color;
     }
 
-    setCoordY(newColor) {
+    setColor(newColor) {
         this.color = newColor;
     }
 
